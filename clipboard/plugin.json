@@ -1,0 +1,18 @@
+{
+    "appid": "clipboard",
+    "name": "剪切板助手",
+    "main": "index.html",
+    "preload": "preload.js",
+    "logo": "logo.png",
+    "shortCut": "CommandOrControl+Shift+`",
+    "args": {
+        "height": 680,
+        "width": 400,
+        "background": true
+    },
+    "keywords": [
+        "剪贴板",
+        "clipboard",
+        "剪切板"
+    ]
+}

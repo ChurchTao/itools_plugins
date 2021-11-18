@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <link href="styles.css" rel="stylesheet">
+    <title>剪切板</title>
+</head>
+
+<body>
+    <div id="content">
+
+    </div>
+
+    <script>
+        let ipcRenderer = window.ipcRenderer;
+        function $(id) {
+            return document.getElementById(id);
+        }
+        ipcRenderer.on('copy-text', (event, arg) => {
+            console.log(arg);
+            let div = document.createElement("div");
+            div.classList.add("text-item");
+            div.innerHTML = arg;
+            $("content").append(div);
+        })
+    </script>
+</body>
+
+</html>
