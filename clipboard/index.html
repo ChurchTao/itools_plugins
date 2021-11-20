@@ -15,16 +15,24 @@
     </div>
 
     <script>
-        let ipcRenderer = window.ipcRenderer;
         function $(id) {
             return document.getElementById(id);
         }
-        ipcRenderer.on('copy-text', (event, arg) => {
-            console.log(arg);
-            let div = document.createElement("div");
-            div.classList.add("text-item");
-            div.innerHTML = arg;
-            $("content").append(div);
+
+        clipboardWatcher({
+            watchDelay: 1000,
+            // handler for when image data is copied into the clipboard
+            // onImageChange: function (image) {
+            //   let img = image.toDataURL()
+            //   console.log(img)
+            //   win.webContents.send('copy-img',img)
+            // },
+            onTextChange: function (text) {
+                let div = document.createElement("div");
+                div.classList.add("text-item");
+                div.innerHTML = text;
+                $("content").append(div);
+            }
         })
     </script>
 </body>
